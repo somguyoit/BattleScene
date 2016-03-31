@@ -2,7 +2,7 @@
 Turn based battle system.
 
 # Project Logo
-<img src=”logo.jpg” alt=”BattleScene”>
+<img src=”./logo.jpg” alt=”BattleScene”>
 
 # Project Description
 This application will let users play a single stage turn based battlesystem.
