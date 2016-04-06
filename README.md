@@ -13,6 +13,7 @@ C++, Qt
 # Screenshots
 menu</br>
 <pre>
+<p>
 _________________________________</br>
 |				|</br>
 |				|</br>
@@ -20,8 +21,8 @@ _________________________________</br>
 |	Class Directory		|</br>
 |	Exit			|</br>
 |				|</br>
----------------------------------</br>
-battle</br>
+---------------------------------</br> </p>
+battle</br><p>
 |-------------------------------|</br>
 | Current Unit|			|</br>	
 |--------------			|</br>
@@ -38,7 +39,7 @@ battle</br>
 |Command 1	Command 2	|</br>
 |Command 3	Command 4	|</br>
 |-------------------------------|</br>
-</pre>
+<p></pre>
 # Installation
 Install QT creator</br>
 Clone Project</br>
