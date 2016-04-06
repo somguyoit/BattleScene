@@ -12,6 +12,7 @@ C++, Qt
 
 # Screenshots
 menu</br>
+<pre>
 _________________________________</br>
 |				|</br>
 |				|</br>
@@ -20,7 +21,7 @@ _________________________________</br>
 |	Exit			|</br>
 |				|</br>
 ---------------------------------</br>
-battle
+battle</br>
 |-------------------------------|</br>
 | Current Unit|			|</br>	
 |--------------			|</br>
@@ -37,7 +38,7 @@ battle
 |Command 1	Command 2	|</br>
 |Command 3	Command 4	|</br>
 |-------------------------------|</br>
-
+</pre>
 # Installation
 Install QT creator</br>
 Clone Project</br>
