@@ -15,29 +15,29 @@ menu</br>
 <pre>
 <p>
 _________________________________
-|				|
-|				|
-|	Start Game		|
-|	Class Directory		|
-|	Exit			|
-|				|
+|                               |
+|                               |
+|       Start Game              |
+|       Class Directory         |
+|       Exit                    |
+|                               |
 --------------------------------- </p></pre>
 battle</br><p><pre>
 |-------------------------------|
-| Current Unit|				|
-|--------------				|
-|						|
-|						|
-|		Enemy 1		Player 1|
-|     Enemy 2	      Player 2  |
-|   Enemy 3	     Player 3	|
+| Current Unit|                 |
+|--------------                 |
+|                               |
+|                               |
+|       Enemy 1         Player 1|
+|     Enemy 2         Player 2  |
+|   Enemy 3         Player 3    |
 |-------------------------------|
 |Enemy 1 info	Player 1 info	|
 |Enemy 2 info	Player 2 info	|
 |Enemy 3 info	Player 3 info	|
-|						|
-|Command 1	Command 2		|
-|Command 3	Command 4		|
+|                               |
+|Command 1    Command 2         |
+|Command 3    Command 4         |
 |-------------------------------|
 <p></pre>
 # Installation
