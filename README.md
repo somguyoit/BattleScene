@@ -11,22 +11,45 @@ This application will let users play a single stage turn based battlesystem.
 C++, Qt
 
 # Screenshots
-menu
-TBD
-
+menu</br>
+_________________________________</br>
+|				|</br>
+|				|</br>
+|	Start Game		|</br>
+|	Class Directory		|</br>
+|	Exit			|</br>
+|				|</br>
+---------------------------------</br>
 battle
-TBD
+|-------------------------------|</br>
+| Current Unit|			|</br>	
+|--------------			|</br>
+|				|</br>
+|				|</br>
+|	Enemy 1		Player 1|</br>
+|     Enemy 2	      Player 2  |</br>
+|   Enemy 3	     Player 3	|</br>
+|-------------------------------|</br>
+|Enemy 1 info	Player 1 info	|</br>
+|Enemy 2 info	Player 2 info	|</br>
+|Enemy 3 info	Player 3 info	|</br>
+|				|</br>
+|Command 1	Command 2	|</br>
+|Command 3	Command 4	|</br>
+|-------------------------------|</br>
 
 # Installation
-TBD
+Install QT creator</br>
+Clone Project</br>
+Build and Run</br>
 
 # Contribution Guidlines
-TBD
+If you would care to contribute please email me at shade12383@gmail.com with contribution idea.</br>
 
 # Bugs & TODO
-Make menu
-make battlesystem
-find graphics
+Make menu </br>
+make battlesystem </br>
+find graphics </br>
 
 # Contribution list
 Som Guy
@@ -35,4 +58,4 @@ Som Guy
 Inspired by jrpg team combat systems.
 
 # License
-MIT?
+MIT License - feel free to distribute.
