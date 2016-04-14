@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MainForm.ui.qml</file>
+        <file>logo.jpg</file>
+        <file>Button.qml</file>
+        <file>TextRect.qml</file>
+        <file>Dialog.qml</file>
+    </qresource>
+</RCC>
