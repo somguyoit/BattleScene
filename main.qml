@@ -1,7 +1,8 @@
 import QtQuick 2.5
 import QtQuick.Window 2.2
 
-Window {
+Window
+{
     id:mainWindow
     visible: true
     height: Screen.height*.5
@@ -9,13 +10,15 @@ Window {
     x: Screen.width*.25
     y: Screen.height*.25
     //signal hoverStarted()
-    DropArea{
+    DropArea
+    {
         anchors.fill: story
         Drag.dragType: Drag.Automatic
         //z: 10
     }
 
-    Dialog{
+    Dialog
+    {
         //anchors.fill: parent
         height: parent.height*.9
         width: parent.width*.9
@@ -34,7 +37,8 @@ Window {
 
         button.x: story.width/2 - story.width/20
         button.y: story.height*8/9
-            TextRect{
+            TextRect
+            {
                 id: continueText
                 x: parent.button.x
                 y: parent.button.y
@@ -46,12 +50,14 @@ Window {
 
 
             }
-            button{
+            button
+            {
                 //mouseArea.anchors.fill:parent;
-                mouseArea.onClicked: {
+                mouseArea.onClicked:
+                {
                     story.visible = false;
                     qButton.visible = true;
-                    charButton.visible = true;
+                    setButton.visible = true;
                     playButton.visible = true;
                 }
             }
@@ -59,15 +65,18 @@ Window {
     }
 
 
-    MainForm {
+    MainForm
+    {
         anchors.fill: parent
-        Image{
+        Image
+        {
             id:background
             source: "logo.jpg"
             anchors.fill: parent
         }
 
-        Button {
+        Button
+        {
             visible: false
             id:qButton
             x: parent.width/3
@@ -76,21 +85,24 @@ Window {
             height: 42
             color: "blue"
             opacity: 0.5
-            mouseArea.onClicked: {
+            mouseArea.onClicked:
+            {
                 Qt.quit();
             }
             mouseArea.hoverEnabled: true
-            mouseArea.onHoveredChanged: {
+            mouseArea.onHoveredChanged:
+            {
                 if(mouseArea.containsMouse)
                 {
-                    topButton.opacity = 1
+                    qButton.opacity = 1
                 }
                 else
                 {
-                    topButton.opacity = 0.5
+                    qButton.opacity = 0.5
                 }
             }
-            TextRect{
+            TextRect
+            {
                 anchors.fill: parent
                 text.text: "Quit Game"
                 text.color: "Red"
@@ -99,39 +111,44 @@ Window {
 
             }
         }
-        Button {
+        Button
+        {
             visible: false
-            id:charButton
+            id:setButton
             x: parent.width/3
             y: parent.height*3/8
             width: parent.width/3
             height: 42
             color: "blue"
             opacity: 0.5
-            mouseArea.onClicked: {
+            mouseArea.onClicked:
+            {
                 Qt.quit();
             }
             mouseArea.hoverEnabled: true
-            mouseArea.onHoveredChanged: {
+            mouseArea.onHoveredChanged:
+            {
                 if(mouseArea.containsMouse)
                 {
-                    midButton.opacity = 1
+                    setButton.opacity = 1
                 }
                 else
                 {
-                    midButton.opacity = 0.5
+                    setButton.opacity = 0.5
                 }
             }
-            TextRect{
+            TextRect
+            {
                 anchors.fill: parent
-                text.text: "Characters"
+                text.text: "Settings"
                 text.color: "Red"
                 text.horizontalAlignment: Text.AlignHCenter
                 text.verticalAlignment: Text.AlignVCenter
 
             }
         }
-        Button {
+        Button
+        {
             visible: false
             id:playButton
             x: parent.width/3
@@ -140,11 +157,13 @@ Window {
             height: 42
             color: "blue"
             opacity: 0.5
-            mouseArea.onClicked: {
+            mouseArea.onClicked:
+            {
                 Qt.quit();
             }
             mouseArea.hoverEnabled: true
-            mouseArea.onHoveredChanged: {
+            mouseArea.onHoveredChanged:
+            {
                 if(mouseArea.containsMouse)
                 {
                     playButton.opacity = 1
@@ -154,7 +173,8 @@ Window {
                     playButton.opacity = 0.5
                 }
             }
-            TextRect{
+            TextRect
+            {
                 anchors.fill: parent
                 text.text: "Play Game"
                 text.color: "Red"
