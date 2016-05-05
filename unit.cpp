@@ -8,7 +8,7 @@ Unit::Unit(QObject *parent) : QObject(parent), int_max_soldiers(0), int_soldiers
 
 void Unit::Attack(Unit *target)
 {
-    target->int_soldiers -= (int_attack/target->int_defense)*.25*int_soldiers;
+    target->int_soldiers -= (int_attack-target->int_defense)*.01*int_soldiers;
 }
 
 int Unit::GetSol()
