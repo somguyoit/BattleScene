@@ -3,9 +3,9 @@ import QtQuick 2.0
 Rectangle{
 
     property int index;
-    property alias HP :rect_current_hp
-    property alias STATS: rect_stats
-    property alias PORTRAIT: rect_portrait
+    property alias hitPoints :rect_current_hp
+    property alias stats: rect_stats
+    property alias portrait: rect_portrait
     Rectangle
     {
         id: rect_portrait

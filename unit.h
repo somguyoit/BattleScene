@@ -15,7 +15,7 @@ public:
     //QString getQStr_name() const;
     //void setQStr_name(const QString &value);
 
-    virtual void Attack(Unit * target);
+    void Attack(Unit * target);
     int GetSol();
     void SetSol(int soldier);
     int GetSolMax();

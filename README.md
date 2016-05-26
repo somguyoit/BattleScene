@@ -14,31 +14,9 @@ C++, Qt
 menu</br>
 <pre>
 <p>
-_________________________________
-|                               |
-|                               |
-|       Start Game              |
-|       Class Directory         |
-|       Exit                    |
-|                               |
---------------------------------- </p></pre>
+<img src=main_menu.jpg alt=”Main Menu”> </p></pre>
 battle</br><p><pre>
-|-------------------------------|
-| Current Unit|                 |
-|--------------                 |
-|                               |
-|                               |
-|       Enemy 1         Player 1|
-|     Enemy 2         Player 2  |
-|   Enemy 3         Player 3    |
-|-------------------------------|
-|Enemy 1 info	Player 1 info	|
-|Enemy 2 info	Player 2 info	|
-|Enemy 3 info	Player 3 info	|
-|                               |
-|Command 1    Command 2         |
-|Command 3    Command 4         |
-|-------------------------------|
+<img src=battle.jpg alt=”Battle Screen”>
 <p></pre>
 # Installation
 Install QT creator</br>
@@ -49,9 +27,9 @@ Build and Run</br>
 If you would care to contribute please email me at shade12383@gmail.com with contribution idea.</br>
 
 # Bugs & TODO
-Make menu </br>
-make battlesystem </br>
-find graphics </br>
+Make menu (done) </br>
+Finish back end battlesystem </br>
+find graphics(done) </br>
 
 # Contribution list
 Som Guy

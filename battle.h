@@ -13,11 +13,11 @@ public:
 
 
 signals:
-    Attacking(int attacker, int defender);
+    Attacking(int attacker, int defender, bool player);
 public slots:
-    void Attack(int attacker, int deffender);
-    Unit GetPlayer(int index);
-    Unit GetEnemy(int index);
+    void Attack(int attacker, int deffender, bool player);
+    Unit& GetPlayer(int index);
+    Unit& GetEnemy(int index);
     void AddPlayer(Unit * unit);
     void AddEnemy(Unit * unit);
 

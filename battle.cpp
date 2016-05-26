@@ -6,13 +6,20 @@ Battle::Battle(QObject *parent) : QObject(parent), index_enemyUnit(-1), index_pl
 
 }
 
-void Battle::Attack(int attacker, int deffender)
+void Battle::Attack(int attacker, int deffender, bool player)
 {
-    attacker.attack(GetEnemy(deffender));
-    emit Attacking(attacker, deffender);
+    if(player)
+    {
+        GetPlayer(attacker).Attack(&GetEnemy(deffender));
+    }
+    else
+    {
+        GetEnemy(attacker).Attack(&GetPlayer(deffender));
+    }
+    emit Attacking(attacker, deffender, player);
 }
 
-Unit Battle::GetPlayer(int index)
+Unit& Battle::GetPlayer(int index)
 {
     if(index > -1 && index_playerUnit <= index)
     {
@@ -20,7 +27,7 @@ Unit Battle::GetPlayer(int index)
     }
 }
 
-Unit Battle::GetEnemy(int index)
+Unit& Battle::GetEnemy(int index)
 {
     if(index > -1 && index_enemyUnit <= index)
     {
@@ -30,16 +37,16 @@ Unit Battle::GetEnemy(int index)
 
 void Battle::AddPlayer(Unit * unit)
 {
-    if(index_playerUnit < 5)
+    if(index_playerUnit++ < 6)
     {
-        units_player[index_playerUnit++] = *unit;
+        units_player[index_playerUnit] = *unit;
     }
 }
 
 void Battle::AddEnemy(Unit * unit)
 {
-    if(index_enemyUnit < 5)
+    if(index_enemyUnit++ < 6)
     {
-        units_enemy[index_playerUnit++] = *unit;
+        units_enemy[index_playerUnit] = *unit;
     }
 }

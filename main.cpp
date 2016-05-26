@@ -2,24 +2,22 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "battle.h"
-#include <iostream>
-using std::cout;
+//#include <iostream>
+//using std::cout;
 
-void SetBattle(Battle &fight);
+void SetBattle(Battle &fight)__attribute__((optimize(0)));
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    Battle BattleScene;
-    SetBattle(BattleScene);
-    //int number = rand()%5;
-    //icout << number;
+    Battle fight;
+    SetBattle(fight);
     QCoreApplication::setApplicationName("BattleScene");
     QCoreApplication::setOrganizationName("SomGuyOit");
     QCoreApplication::setOrganizationDomain(".Git2TehHub");
 
     QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("fight", &BattleScene);
+    engine.rootContext()->setContextProperty("fight", &fight);
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     return app.exec();

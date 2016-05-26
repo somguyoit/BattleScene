@@ -12,7 +12,15 @@ Rectangle
     Connections
     {
         target: fight
-        onAttacking{
+        onAttacking:{
+            if(player)
+            {
+
+            }
+            else
+            {
+
+            }
 
         }
     }
