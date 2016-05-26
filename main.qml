@@ -11,10 +11,18 @@ Window
     width: Screen.width*.5
     x: Screen.width*.25
     y: Screen.height*.25
+    BattleScene
+    {
+        id: battle
+        visible: false
+        anchors.fill: parent
+    }
+
     Settings
     {
         id: globalSettings
         property bool showSplash;
+        property bool battleVideos;
     }
     Rectangle
     {
@@ -102,8 +110,8 @@ Window
         {
             id: video_opening
             source: "qrc:/Videos/Souten Kouro - Sōten Kōro_xvid.avi"
-            autoPlay: true
-            fillMode: VideoOutput.Stretch
+            autoPlay: !globalSettings.showSplash
+            fillMode: VideoOutput.PreserveAspectCrop
             anchors.fill: story
             //z: parent.z +10
             onStopped:
@@ -141,6 +149,7 @@ Window
                 mouseArea.onClicked:
                 {
                     //video_opening.play()
+                    video_opening.stop()
                     story.visible = false;
                     qButton.visible = true;
                     setButton.visible = true;
@@ -152,6 +161,7 @@ Window
 
     MainForm
     {
+        id: mainMenu
         anchors.fill: parent
         Image
         {
@@ -163,7 +173,7 @@ Window
         Button
         {
             visible: !globalSettings.showSplash
-            id:qButton
+            id: qButton
             x: parent.width/3
             y: parent.height*5/8
             width: parent.width/3
@@ -247,7 +257,8 @@ Window
             opacity: 0.5
             mouseArea.onClicked:
             {
-                Qt.quit();
+                battle.visible = true;
+                mainMenu.visible = false;
             }
             mouseArea.hoverEnabled: true
             mouseArea.onHoveredChanged:

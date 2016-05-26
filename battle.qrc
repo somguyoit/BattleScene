@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>BattleScene.qml</file>
+        <file>StrategyField.qml</file>
+        <file>Unit.qml</file>
     </qresource>
 </RCC>

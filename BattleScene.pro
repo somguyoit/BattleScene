@@ -9,7 +9,8 @@ SOURCES += main.cpp \
 
 RESOURCES += qml.qrc \
     battle.qrc \
-    videos.qrc
+    videos.qrc \
+    images.qrc
 
 CONFIG += resources_big
 

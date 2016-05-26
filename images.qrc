@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Images/healer.png</file>
+        <file>Images/knight.png</file>
+        <file>Images/magician.png</file>
+        <file>Images/archer.png</file>
+        <file>Images/ninja.png</file>
+        <file>Images/saber.png</file>
+        <file>Images/BattleFiled.jpg</file>
+        <file>Images/Ogre.png</file>
+    </qresource>
+</RCC>

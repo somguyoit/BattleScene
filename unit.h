@@ -2,6 +2,7 @@
 #define UNIT_H
 
 #include <QObject>
+#include <QImage>
 
 class Unit : public QObject
 {
@@ -9,12 +10,11 @@ class Unit : public QObject
 public:
     explicit Unit(QObject *parent = 0);
     virtual ~Unit(){}
-    QString getQStr_name() const;
-    void setQStr_name(const QString &value);
+    Unit(const Unit& copy);
+    Unit& operator=(const Unit& copy);
+    //QString getQStr_name() const;
+    //void setQStr_name(const QString &value);
 
-signals:
-
-public slots:
     virtual void Attack(Unit * target);
     int GetSol();
     void SetSol(int soldier);
@@ -24,13 +24,20 @@ public slots:
     int GetDef();
     int GetSpd();
     int GetInt();
+    //QUrl GetPortrait();
     void SetAtk(int);
     void SetDef(int);
     void SetSpd(int);
     void SetInt(int);
+    //void SetQImg(QUrl picture);
+signals:
+    damageTaken(int soldiers);
+public slots:
+
 
 protected:
-    QString qStr_name;
+    //QImage qImg_Portrait;
+    //QString qStr_name;
     int int_max_soldiers;
     int int_soldiers;
     int int_attack;

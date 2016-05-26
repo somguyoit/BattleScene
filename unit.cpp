@@ -1,14 +1,36 @@
 #include "unit.h"
 
 Unit::Unit(QObject *parent) : QObject(parent), int_max_soldiers(0), int_soldiers(0), int_attack(0),\
-    int_defense(0), int_speed(0), int_intellect(0)
+    int_defense(0), int_speed(0), int_intellect(0)/*, qImg_Portrait(), qStr_name("Warrior")*/
 {
 
+}
+
+Unit::Unit(const Unit &copy)
+{
+    *this = copy;
+}
+
+Unit &Unit::operator=(const Unit &copy)
+{
+    if(this != &copy)
+    {
+        //qImg_Portrait = copy.qImg_Portrait;
+        //qStr_name = copy.qStr_name;
+        int_max_soldiers = copy.int_max_soldiers;
+        int_soldiers = copy.int_soldiers;
+        int_attack = copy.int_attack;
+        int_defense = copy.int_defense;
+        int_speed = copy.int_speed;
+        int_intellect = copy.int_intellect;
+    }
+    return *this;
 }
 
 void Unit::Attack(Unit *target)
 {
     target->int_soldiers -= (int_attack-target->int_defense)*.01*int_soldiers;
+    int_soldiers -= .3*((target->int_attack - int_defense)* .01 * target->int_soldiers);
 }
 
 int Unit::GetSol()
@@ -71,12 +93,12 @@ void Unit::SetInt(int Int)
     int_intellect = Int;
 }
 
-QString Unit::getQStr_name() const
-{
-    return qStr_name;
-}
+//QString Unit::getQStr_name() const
+//{
+//    return qStr_name;
+//}
 
-void Unit::setQStr_name(const QString &value)
-{
-    qStr_name = value;
-}
+//void Unit::setQStr_name(const QString &value)
+//{
+//    qStr_name = value;
+//}
