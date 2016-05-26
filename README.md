@@ -14,9 +14,9 @@ C++, Qt
 menu</br>
 <pre>
 <p>
-<img src=main_menu.jpg alt=”Main Menu”> </p></pre>
+<img src=main_menu.JPG alt=”Main Menu”> </p></pre>
 battle</br><p><pre>
-<img src=battle.jpg alt=”Battle Screen”>
+<img src=battle.JPG alt=”Battle Screen”>
 <p></pre>
 # Installation
 Install QT creator</br>
