@@ -10,16 +10,22 @@ class Battle : public QObject
 public:
     explicit Battle(QObject *parent = 0);
     ~Battle(){}
-
+    Q_INVOKABLE Unit& getPlayer(int index);
+    Q_INVOKABLE Unit& getEnemy(int index);
+    Q_INVOKABLE void addPlayer(Unit * unit);
+    Q_INVOKABLE void addEnemy(Unit * unit);
+    Q_INVOKABLE int getSoldiers(int index, bool player);
+    Q_INVOKABLE int giveRand();
 
 signals:
-    Attacking(int attacker, int defender, bool player);
+    attacking(int attacker, int defender, bool player);
+    ready(int index, Unit& unit, bool player);
+    picked(int index);
 public slots:
-    void Attack(int attacker, int deffender, bool player);
-    Unit& GetPlayer(int index);
-    Unit& GetEnemy(int index);
-    void AddPlayer(Unit * unit);
-    void AddEnemy(Unit * unit);
+    Q_INVOKABLE void attack(int attacker, int deffender, bool player);
+    void done(int index, Unit& unit, bool player);
+    void pickUnit();
+
 
 private:
     Unit units_player[6];

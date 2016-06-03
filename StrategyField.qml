@@ -9,32 +9,46 @@ Rectangle
     color: "blue"
     border.color: "black"
     border.width: 3
-    Connections
-    {
-        target: fight
-        onAttacking:{
-            if(player)
-            {
-
-            }
-            else
-            {
-
-            }
-
-        }
-    }
 
     Rectangle
     {
         id: rect_enemies
-        Unit
-        {
+        height: parent.height
+        width: parent.width *.5
+        color: red
+        property list<Unit> enemies:
+        [
+            Unit{
+                id: ogre
 
-        }
+            }
+
+        ]
     }
     Rectangle
     {
         id: rect_player
+        property list<Unit> allies:
+            [
+            Unit{
+                id: warrior
+                hitPoints.width: fight.GetPlayer(0).get
+            },
+            Unit{
+                id: knight
+            },
+            Unit{
+                id: ninja
+            },
+            Unit{
+                id: healer
+            },
+            Unit{
+                id: mage
+            },
+            Unit{
+                id: archer
+            }
+        ]
     }
 }

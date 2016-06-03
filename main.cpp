@@ -9,15 +9,18 @@ void SetBattle(Battle &fight)__attribute__((optimize(0)));
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication app(argc, argv);
     Battle fight;
-    SetBattle(fight);
+    Unit * ogre = &(fight.getEnemy(0));
+    QGuiApplication app(argc, argv);
+
+    //SetBattle(fight);
     QCoreApplication::setApplicationName("BattleScene");
     QCoreApplication::setOrganizationName("SomGuyOit");
     QCoreApplication::setOrganizationDomain(".Git2TehHub");
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("fight", &fight);
+    engine.rootContext()->setContextProperty("fight_ogre", ogre);
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     return app.exec();
@@ -29,21 +32,21 @@ void SetBattle(Battle & fight)
     for(int i = 0; i < 6; i++)
     {
         unit = new Unit();
-        unit->SetAtk(10-i);
-        unit->SetDef(rand()%10);
-        unit->SetInt(5);
-        unit->SetSpd(i + rand()%10);
-        unit->SetSolMax(400+rand()%200);
-        unit->SetSol(unit->GetSolMax());
-        fight.AddPlayer(unit);
+        unit->setAtk(10-i);
+        unit->setDef(rand()%10);
+        unit->setInt(5);
+        unit->setSpd(i + rand()%10);
+        unit->setSolMax(400+rand()%200);
+        unit->setSol(unit->getSolMax());
+        fight.addPlayer(unit);
     }
 
     unit = new Unit();
-    unit->SetAtk(10);
-    unit->SetDef(rand()%10);
-    unit->SetInt(5);
-    unit->SetSpd(3+ rand()%10);
-    unit->SetSolMax(5*(400+rand()%200));
-    unit->SetSol(unit->GetSolMax());
-    fight.AddEnemy(unit);
+    unit->setAtk(10);
+    unit->setDef(rand()%10);
+    unit->setInt(5);
+    unit->setSpd(3+ rand()%10);
+    unit->setSolMax(5*(400+rand()%200));
+    unit->setSol(unit->getSolMax());
+    fight.addEnemy(unit);
 }

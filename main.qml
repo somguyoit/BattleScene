@@ -11,11 +11,339 @@ Window
     width: Screen.width*.5
     x: Screen.width*.25
     y: Screen.height*.25
+    property int selected;
+    onSelectedChanged:
+    {
+        if(selected == 0)
+        {
+            sabre_command.opacity = 1;
+            night_command.opacity = 1/1.6;
+            ninja_command.opacity = 1/1.6;
+            healer_command.opacity = 1/1.6;
+            mage_command.opacity = 1/1.6;
+            archer_command.opacity = 1/1.6;
+        }
+        else if(selected == 1)
+        {
+            sabre_command.opacity = 1/1.6;
+            night_command.opacity = 1/1;
+            ninja_command.opacity = 1/1.6;
+            healer_command.opacity = 1/1.6;
+            mage_command.opacity = 1/1.6;
+            archer_command.opacity = 1/1.6;
+        }
+        else if(selected == 2)
+        {
+            sabre_command.opacity = 1/1.6;
+            night_command.opacity = 1/1.6;
+            ninja_command.opacity = 1/1;
+            healer_command.opacity = 1/1.6;
+            mage_command.opacity = 1/1.6;
+            archer_command.opacity = 1/1.6;
+        }
+        else if(selected == 3)
+        {
+            sabre_command.opacity = 1/1.6;
+            night_command.opacity = 1/1.6;
+            ninja_command.opacity = 1/1.6;
+            healer_command.opacity = 1/1;
+            mage_command.opacity = 1/1.6;
+            archer_command.opacity = 1/1.6;
+        }
+        else if(selected == 4)
+        {
+            sabre_command.opacity = 1/1.6;
+            night_command.opacity = 1/1.6;
+            ninja_command.opacity = 1/1.6;
+            healer_command.opacity = 1/1.6;
+            mage_command.opacity = 1/1;
+            archer_command.opacity = 1/1.6;
+        }
+        else
+        {
+            sabre_command.opacity = 1/1.6;
+            night_command.opacity = 1/1.6;
+            ninja_command.opacity = 1/1.6;
+            healer_command.opacity = 1/1.6;
+            mage_command.opacity = 1/1.6;
+            archer_command.opacity = 1/1;
+        }
+    }
+
+    Connections
+    {
+        target: fight
+        onAttacking:
+        {
+            if(player)
+            {
+                ogre.hitPoints = fight.getSoldiers(0, 0);
+            }
+            else
+            {
+                if(defender == 0)
+                {
+                    sabre_command.hitPoints = fight.getSoldiers(defender,1)
+                }
+                else if(defender == 1)
+                {
+                    night_command.hitPoints = fight.getSoldiers(defender,1)
+                }
+                else if (defender == 2)
+                {
+                    ninja_command.hitPoints = fight.getSoldiers(defender,1)
+                }
+                else if (defender == 3)
+                {
+                    healer_command.hitPoints = fight.getSoldiers(defender, 1)
+                }
+                else if (defender == 4)
+                {
+                    mage_command.hitPoints = fight.getSoldiers(defender, 1)
+                }
+                else if (defender == 5)
+                {
+                    archer_command.hitPoints = fight.getSoldiers(defender, 1)
+                }
+            }
+
+            fight.pickUnit()
+        }
+        onPicked:
+        {
+            if(index == 6 && fight.getSoldiers(0, 0)> 0)
+            {
+                var target = fight.giveRand();
+
+                ogre_select.start()
+                if(fight.getSoldiers(target, 1) > 0)
+                {
+                    fight.attack(0, target, 0);
+                }
+                else
+                {
+                    while(fight.getSoldiers(target, 1) <= 0)
+                    {
+                        target = fight.giveRand()
+                    }
+                    fight.attack(0, target, 0);
+                }
+                ogre.border.width = 0
+
+            }
+            else if(index < 6)
+            {
+                while(fight.getSoldiers(index, 1) <= 0)
+                {
+                    index = (fight.giveRand())
+                }
+                selected = index;
+            }
+
+        }
+
+        //        onReady:
+        //        {
+        //            if (player)
+        //            {
+        //                if(index == 0)
+        //                {
+
+        //                }
+        //            }
+        //            else
+        //            {
+        //                if(index == 0)
+        //                {
+        //                    ogre.hitPoints = unit.getSol();
+        //                    ogre.maxHP = unit.getSolMax();
+        //                }
+        //            }
+        //        }
+    }
+
     BattleScene
     {
         id: battle
         visible: false
         anchors.fill: parent
+        Rectangle
+        {
+            id: strategyScene
+            height: battle.height
+            width: battle.width
+            y: parent.y + parent.height *.5
+            border.color: "black"
+            border.width: 3
+
+            Rectangle
+            {
+                //anchors.left: parent.left
+                //anchors.right: parent.right
+                id: rect_enemies
+                height: parent.height*.5
+                width: parent.width*.5
+                color: "yellow"
+                Unit{
+                    //                    z:parent.z +2
+                    //                    color: "transparent"
+                    //                    x: parent.x
+                    //                    y: parent.y
+                    height: parent.height
+                    width: parent.width
+                    id: ogre
+                    portrait: "qrc:Images/Ogre.png"
+                    unitName: "Ogre"
+                    hitPoints: fight.getSoldiers(0, 0)
+                    maxHP: fight.getSoldiers(0, 0);
+                    border.width: 20
+                    Timer{
+                        id: ogre_select
+                        interval: 500
+                        repeat: false
+                        onTriggered:
+                        {
+                            //ogre.border.color = "transparent"
+                            ogre_select.stop()
+                        }
+                        onRunningChanged:
+                        {
+                            //                            if(ogre.border.color != "red")
+                            //                            {
+                            if(ogre.border.color == "black")
+                            {
+                                ogre.border.color = "red"
+                            }
+                            else
+                            {
+                                ogre.border.color = "black"
+                            }
+
+                            //                            }
+                            //                            else
+                            //                            {
+                            //                                ogre.border.color == "transparent"
+                            //                            }
+                        }
+                    }
+
+                    MouseArea{
+                        //color: "transparent"
+                        anchors.fill: ogre
+                        hoverEnabled: true
+                        onHoveredChanged: {
+                            if(containsMouse)
+                            {
+                                ogre.opacity = 1
+                            }
+                            else
+                            {
+                                ogre.opacity = 1/1.6
+                            }
+                        }
+
+                        onClicked:{
+                            fight.attack(selected, 0, 1);
+                        }
+                    }
+                }
+            }
+            Rectangle
+            {
+                id: rect_player
+                x: parent.x + parent.width *.5
+                height: strategyScene.height*.5
+                width: strategyScene.width * .5
+                color: "blue"
+                Row{
+                    id: row_allies
+                    //                    x: parent.x
+                    //                    y: parent.y
+                    //                    z: ogre.z
+                    //                    height: parent.height
+                    //                    width: parent.width
+                    spacing: 20
+                    Column{
+                        spacing : 10
+                        Unit{
+                            id: sabre_command
+                            x: parent.x
+                            y: parent.y
+                            z: 20
+                            height: rect_player.height * .3
+                            width: rect_player.width * .45
+                            portrait: "qrc:Images/saber.png"
+                            unitName: "Sabre"
+                            hitPoints: fight.getSoldiers(0,1)
+                            maxHP: fight.getSoldiers(0, 1);
+
+                        }
+                        Unit{
+                            id:night_command
+                            y: sabre_command.y + sabre_command.height
+                            z:21
+                            //                            anchors.top: sabre_command.bottom
+                            //                            anchors.horizontalCenter: sabre_command.horizontalCenter
+                            height: rect_player.height * .3
+                            width: rect_player.width * .45
+                            portrait: "qrc:Images/knight.png"
+                            unitName: "Death Knight"
+                            hitPoints: fight.getSoldiers(1, 1)
+                            maxHP: fight.getSoldiers(1, 1);
+
+                        }
+                        Unit{
+                            id: ninja_command
+                            //                            anchors.top: night_command.bottom
+                            //                            anchors.horizontalCenter: sabre_command.horizontalCenter
+                            height: rect_player.height * .3
+                            width: rect_player.width * .45
+                            portrait: "qrc:Images/ninja.png"
+                            unitName: "Anti-Love"
+                            hitPoints: fight.getSoldiers(2, 1)
+                            maxHP: fight.getSoldiers(2, 1);
+
+                        }
+                    }
+                    Column{
+                        spacing: 10
+                        Unit{
+                            id: healer_command
+                            height: rect_player.height * .3
+                            width: rect_player.width * .45
+                            portrait: "qrc:Images/healer.png"
+                            unitName: "Moon Sticks!"
+                            hitPoints: fight.getSoldiers(3,1)
+                            maxHP: fight.getSoldiers(3,1);
+
+                        }
+                        Unit{
+                            id: mage_command
+                            height: rect_player.height * .3
+                            width: rect_player.width * .45
+                            portrait: "qrc:Images/magician.png"
+                            unitName: "Kurama"
+                            hitPoints: fight.getSoldiers(3,1)
+                            maxHP: fight.getSoldiers(3,1);
+
+                        }
+                        Unit{
+                            id: archer_command
+                            height: rect_player.height * .3
+                            width: rect_player.width * .45
+                            portrait: "qrc:Images/archer.png"
+                            unitName: "Abigaile"
+                            hitPoints: fight.getSoldiers(3,1)
+                            maxHP: fight.getSoldiers(3,1);
+
+                        }
+                    }
+                }
+
+
+            }
+        }
+
     }
 
     Settings
@@ -110,7 +438,7 @@ Window
         {
             id: video_opening
             source: "qrc:/Videos/Souten Kouro - Sōten Kōro_xvid.avi"
-            autoPlay: !globalSettings.showSplash
+            //autoPlay: !globalSettings.showSplash == (true)? true: false
             fillMode: VideoOutput.PreserveAspectCrop
             anchors.fill: story
             //z: parent.z +10
@@ -121,45 +449,50 @@ Window
                 setButton.visible = true;
                 playButton.visible = true;
             }
-
-        }
-            TextRect
-            {
-                radius: width
-                z: video_opening.z +1
-                color: "white"
-                id: continueText
-                x: story.width/2 - story.width/20
-                y: story.height*8/9
-                height: parent.height*.05
-                width: parent.width*.1
-                text.color: "green"
-                text.text: "Continue..."
-                text.horizontalAlignment: Text.AlignHCenter
-                text.verticalAlignment: Text.AlignVCenter
-
-
-            }
-            button
-            {
-                color: "transparent"
-                anchors.fill: story
-                z: video_opening.z +1
-                //mouseArea.anchors.fill: story
-                mouseArea.onClicked:
+            Component.onCompleted: {
+                if(globalSettings.showSplash)
                 {
-                    //video_opening.play()
-                    video_opening.stop()
-                    story.visible = false;
-                    qButton.visible = true;
-                    setButton.visible = true;
-                    playButton.visible = true;
+                    video_opening.play()
                 }
             }
+        }
+        TextRect
+        {
+            radius: width
+            z: video_opening.z +1
+            color: "white"
+            id: continueText
+            x: story.width/2 - story.width/20
+            y: story.height*8/9
+            height: parent.height*.05
+            width: parent.width*.1
+            text.color: "green"
+            text.text: "Continue..."
+            text.horizontalAlignment: Text.AlignHCenter
+            text.verticalAlignment: Text.AlignVCenter
+
+
+        }
+        button
+        {
+            color: "transparent"
+            anchors.fill: story
+            z: video_opening.z +1
+            //mouseArea.anchors.fill: story
+            mouseArea.onClicked:
+            {
+                //video_opening.play()
+                video_opening.stop()
+                story.visible = false;
+                qButton.visible = true;
+                setButton.visible = true;
+                playButton.visible = true;
+            }
+        }
     }
 
 
-    MainForm
+    Rectangle
     {
         id: mainMenu
         anchors.fill: parent
@@ -259,6 +592,7 @@ Window
             {
                 battle.visible = true;
                 mainMenu.visible = false;
+                fight.pickUnit();
             }
             mouseArea.hoverEnabled: true
             mouseArea.onHoveredChanged:
